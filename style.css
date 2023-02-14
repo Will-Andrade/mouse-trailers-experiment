@@ -1,0 +1,75 @@
+html { font-size: 62.5%; }
+
+body {
+  background-color: #222;
+  height: 100vh;
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+}
+
+#trailer {
+  height: 2rem;
+  width: 2rem;
+  background-color: #fff;
+  border-radius: 2rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* To not interfere w/ other elements */
+  position: fixed;
+
+  left: 0;
+  top: 0;
+  
+  /* to always be above everything */
+  z-index: 10000; 
+
+  /* for hovers & clicks to pass to the element underneat*/
+  pointer-events: none; 
+
+  /* To hide it until the mouse enters the screen, bellow */
+  opacity: 0;
+  transition: opacity 500ms ease;
+}
+
+body:hover > #trailer {
+  opacity: 1;
+}
+
+#trailer:not([data-type=""]) > #trailer-icon {
+  opacity: 1;
+}
+
+#trailer-icon {
+  font-size: .6rem;
+  line-height: .4rem;
+
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+
+.container {
+  overflow: hidden;
+}
+
+.interactable {
+  width: 100%;
+  height: auto;
+  transition: transform .3s ease-in-out, opacity .3s ease-in-out;
+}
+
+.interactable:hover {
+  transform: scale(1.05);
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.arrow-transformed {
+  transform: rotate(45deg);
+}
